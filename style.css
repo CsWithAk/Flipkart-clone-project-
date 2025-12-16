@@ -1,4 +1,4 @@
-@import url('https://fonts.google.com?css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 /* -webkit-box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1);
 -moz-box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1);
 box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1); */
@@ -6,7 +6,7 @@ box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1); */
 *{
   padding:0;
   margin:0;
-  box-sizing:box-border;
+  box-sizing:border-box;
 }
 
 a{
@@ -38,7 +38,7 @@ header{
   width:160px;
 }
 
-.searchber{
+.searchbar{
   font-size:1.4rem;
   margin: 0px 10px;
   display: flex;
@@ -48,20 +48,37 @@ header{
   background-color: #f0f5ff;
 }
 
-.searchber i{
+.searchbar i{
   font-size:1.4rem;
   margin:0px 10px;
 }
 
-.searchber input{
+.searchbar input{
   height:40px;
   width:100%;
   border:none;
   outline:none;
   background: transparent;
   font-size: 1.1rem;
-  color:#E3E6FF;
+  color:#212121;
 }
+
+.searchbar .search-btn,
+.searchbar .clean-btn{
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 1.1rem;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.searchbar .clean-btn{
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.searchbar{gap:8px; padding:6px 10px; border-radius:6px;}
 
 .hiconcss{
   display: flex;
@@ -83,7 +100,7 @@ div > .ldicon{
 
 .catagory{
   height:150px;
-  width: 150;
+  width: 100%;
   display:flex; 
   align-items:center;
   justify-content: space-evenly;
@@ -95,65 +112,75 @@ div > .ldicon{
 .catimg img{
   height: 70px;
   width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background-color: white; 
-  flex-direction: row;
 } 
 
 /*===============slider ===================*/
 
 .slidercontainer{
-  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 18px 0;
 }
 
 .slider{
-  height: 240px;
-  width:100%;
-  /*background-image:  url(); if image is not applied in HTML */
-  position: relative;
-  display: center;
-  justify-content: space-evenly;
-}
-
-.slidericon{
-  height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
-.sileft{
-  height:88px;
-  width: 40px;
-  color: #8b8b8b;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.siright{
-  height:88px;
-  width: 40px;
-  color: #8b8b8b;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.siimage{
+  width: 100%;
 }
 
 .siimage img{
-  height: 240px;
-  width: 1000px;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.slidericon{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none; /* allow clicks only on buttons */
+  padding: 0 8px;
+}
+
+.sileft, .siright{
+  pointer-events: auto;
+  height: 44px;
+  width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255,255,255,0.9);
+  color: #222;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: background .12s ease, transform .12s ease;
+}
+
+.sileft:hover, .siright:hover{
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* smaller screens: reduce arrow size and image max-width */
+@media (max-width: 600px){
+  .slider{ max-width: 100%; }
+  .sileft, .siright{ height:36px; width:36px; font-size:0.95rem; }
 }
 
 /*============product section==============*/
@@ -165,20 +192,7 @@ div > .ldicon{
   margin-top: 30px;
   gap: 15px;
 }
-/*
-.psright{
-  height: 345px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  background-color: white;
-}
 
-.psright img{
-  height: 320px;
-  width: 210px;
-} */
 
 .psleft{
   height: 100%;
@@ -191,7 +205,6 @@ div > .ldicon{
   width: 100%;
   padding: 0px 0px;
   display: flex;
-  align-items: center;
   align-items: center;
   justify-content: space-between;
 }
@@ -210,6 +223,22 @@ div > .ldicon{
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
+}
+
+/* product header next button (replaces raw icon) */
+.productheader .pg-next{
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1C41DC;
+  font-size: 1rem;
+}
+.productheader .pg-next i{
+  display: inline-flex;
 }
 
 .product{
@@ -246,12 +275,42 @@ div > .ldicon{
 
 .productgroup{
   display:flex;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   position:relative;
+  scroll-behavior: smooth;
 }
-/*
+
+/* hide default scrollbar but keep scrolling functional */
+.productgroup::-webkit-scrollbar{
+  height: 8px;
+}
+.productgroup::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,0.12);
+  border-radius: 4px;
+}
+.productgroup{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: thin; /* Firefox */
+}
+.productleft{
+  position: absolute;
+  height: 88px;
+  width: 40px;
+  background-color: white;
+  color:#8b8b8b;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  top:32%;
+  left:5%;
+  -webkit-box-shadow: 2px 0px 3px 1px rgba(222, 222, 222, 1);
+  -moz-box-shadow: 2px 0px 3px 1px rgba(222, 222, 222, 1);
+  box-shadow: 2px 0px 3px 1px rgba(222, 222, 222, 1);
+}
+
 .productright{
-  position: center;
+  position: absolute;
   height: 88px;
   width: 40px;
   background-color: white;
@@ -264,12 +323,12 @@ div > .ldicon{
   -webkit-box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1);
   -moz-box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1);
   box-shadow: -2px 0px 3px 1px rgba(222, 222, 222, 1);
-}*/
+} 
 
 /*==========product section 2=============*/
 
 .productsection2{
-height: 345;
+height: 345px;
 width: 100%;
 margin-top:20px;
 display: flex;
@@ -286,7 +345,7 @@ gap:15px;
 /*===========product section 3============*/
 
 .productsection3{
-height: 345;
+height: 345px;
 width: 100%;
 margin-top:20px;
 display: flex;
@@ -319,7 +378,7 @@ gap:15px;
   padding-left: 15px;
 }
 
-.ddirectorylink span{
+.directorylink span{
   font-size:0.9rem;
 }
 
@@ -328,59 +387,184 @@ gap:15px;
   color:#565656;
 }
 
-/*=================footer=================*/
+/*=============footer section=============*/
+
 
 footer{
-  height: 320px;
   width: 100%;
-  margin: auto;
-  background-color: #212121;
+  background-color: #111217;
+  color: #e6e6e6;
+}
+
+.footertop{
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .footpara{
-  height: 250px;
-  width: 100%;
+  max-width: 1334px;
+  margin: 0 auto;
+  padding: 36px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr)) 220px;
+  gap: 24px;
+  align-items: start;
+}
+
+.footpara1{
   display: flex;
-  align-items: center;
-  justify-content:space-evenly;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footparahead p{
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.4px;
 }
 
 .footparainfo{
   display: flex;
   flex-direction: column;
-  font-size: 0.8rem;
-  font-weight: 600;
-  gap: 5px;
-  margin-top: 10px;
-}
-
-.footparahead p{
-  font-size: 0.8rem;
-  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 500;
+  gap: 8px;
+  margin: 0;
 }
 
 .footparainfo a{
-  color: white;
+  color: #cfcfcf;
+  transition: color .15s ease-in-out;
 }
 
-/*=======================================*/
+.footparainfo a:hover{
+  color: #ffffff;
+}
+
+.social-Media{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.social-Media a{
+  color: #cfcfcf;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.social-Media a:hover{
+  color: #ffffff;
+}
 
 .footerbtm{
-  height: 70px;
   width: 100%;
-  border-top:2px groove #454d5e;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
 }
 
 .footbtmgroup{
-  height: 100%;
-  width: 100%;
+  max-width: 1334px;
+  margin: 0 auto;
   display: flex;
+  gap: 18px;
   align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 0px 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 6px 0;
+}
+
+.btmpara1{
+  color: #dcdcdc;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.copyright p{
+  margin: 0;
+  color: #9f9f9f;
+  font-size: 0.9rem;
+}
+
+.paymentimg img{
+  max-width: 220px;
+  height: auto;
+  display: block;
 }
 
 .space{
-  height: 200px;
+  height: 40px;
+}
+
+/* Responsive footer: stack columns on small screens */
+@media (max-width: 900px){
+  .footpara{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .social-Media{
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .footbtmgroup{
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .paymentimg{
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+/* Header & mobile menu responsive rules */
+@media (max-width: 900px){
+  header{
+    padding: 8px 12px;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .logo{ width: 120px; }
+
+  .searchbar{ order: 2; flex: 1; margin: 0 8px; }
+
+  /* hide desktop header actions on small screens */
+  .login, .Cart, .seller{
+    display: none;
+  }
+
+  /* ensure menu (three dots) is visible and ordered last */
+  .menu{ order: 3; display: flex; }
+
+  /* Mobile menu panel */
+  .mobile-menu{
+    position: fixed;
+    top: 56px;
+    right: 12px;
+    width: 220px;
+    background: #ffffff;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 8px;
+    z-index: 9999;
+    display: none;
+  }
+
+  .mobile-menu.open{ display: block; }
+
+  .mobile-menu .m-item{ display:flex; align-items:center; gap:8px; padding:8px 6px; border-radius:6px; cursor:pointer; }
+  .mobile-menu .m-item:hover{ background: #f3f3f3; }
+  .mobile-menu .m-item i{ font-size:1.2rem; }
+  .mobile-menu a{ color: inherit; text-decoration: none; display: flex; align-items: center; width:100%; }
 }
