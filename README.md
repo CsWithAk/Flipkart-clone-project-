@@ -9,7 +9,7 @@ This project focuses on building a clean, responsive, and visually similar UI of
 
 ## 📸 Project Output
 
-![Flipkart Clone Output](images/flipkart-clone-output.png)
+![Flipkart Clone Output](images/flipkart-clone-output.jpg)
 
 ---
 
